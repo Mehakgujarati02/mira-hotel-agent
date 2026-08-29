@@ -93,7 +93,7 @@ Ask Guest    Search Hotels
         Confirm Booking
 
 
-Core Components:-
+CORE COMPONENTS:-
 
 MiraAgent
 Controls the conversation and booking state transitions.

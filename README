@@ -77,7 +77,7 @@ The Streamlit interface will open in your browser:)
                       ▼
                 Booking Flow
 
-PROJECT STRUCTURE:-
+##PROJECT STRUCTURE:-
 
 mira-hotel-agent/
 │
@@ -99,7 +99,7 @@ mira-hotel-agent/
 ├── .env                  # API key (not committed)
 └── README.md
 
-Component Responsibilities
+##Component Responsibilities=
 app.py:- Streamlit chat interface and UI
 agent.py:-	Conversation orchestration and booking flow
 llm.py:-	Natural-language intent extraction
@@ -108,19 +108,44 @@ tools.py:-	Deterministic hotel/property search
 hotels.json:-	Structured hotel and room inventory
 tests/:-	Test cases and validation
 
-Design Principle
+##Design Principle
 
 LLM handles understanding and conversation.
 Deterministic Python logic handles hotel data, filtering, validation and booking state.
-
 This separation reduces the risk of hallucinating hotel names, prices or room information.
 
-Environment Variables
+##important:- 
+## LLM Mock Mode
+
+Mira includes a mock mode for reliable local development and testing.
+
+When mock mode is enabled, intent extraction is handled by deterministic
+Python logic instead of making a Gemini API request. This allows the
+complete hotel-search and booking workflow to be tested without depending
+on API availability, network connectivity, rate limits, or API costs.
+
+```python
+USE_MOCK_LLM = True
+
+When mock mode is disabled:
+USE_MOCK_LLM = False
+Mira uses the configured GEMINI_API_KEY and Gemini API for natural-language
+intent extraction.
+
+Mock mode provides:
+
+Reliable testing without API dependency
+Faster local development
+No API usage during repeated tests
+Predictable intent extraction
+A fallback for development/demo environments
+
+##Environment Variables:
 
 Mira currently requires the following environment variable:-
 GEMINI_API_KEY,	Google Gemini API key used for natural-language intent extraction	
 
-Assumptions-
+##Assumptions-
 Hotel and room information is stored in a structured local JSON inventory.
 Hotel prices represent the price per night.
 The guest's budget is interpreted as the maximum acceptable nightly room price.
@@ -130,7 +155,7 @@ Dates are interpreted using the current year when the year is not explicitly pro
 Booking confirmation represents a simulated booking flow; it does not connect to a real hotel reservation system.
 Hotel availability is based on the provided inventory rather than a live hotel booking API.
 
-CONVERSATIONAL FLOW:-
+##CONVERSATIONAL FLOW:-
 
 Guest Request
       ↓
@@ -153,7 +178,7 @@ Ask Guest    Search Hotels
         Confirm Booking
 
 
-CORE COMPONENTS:-
+##CORE COMPONENTS:-
 
 MiraAgent
 Controls the conversation and booking state transitions.
@@ -170,7 +195,7 @@ A structured JSON dataset containing fictional properties, rooms, prices, capaci
 Streamlit UI
 Provides the conversational interface and displays the current booking state.
 
-Key Features:-
+##Key Features:-
 Natural-language requirement extraction
 Persistent conversation state
 Deterministic hotel search
@@ -182,7 +207,7 @@ Booking confirmation flow
 Streamlit chat interface
 
 
-Tech Stack:-
+##Tech Stack:-
 
 Python
 Google Gemini API
@@ -191,7 +216,7 @@ JSON
 Dataclasses
 python-dotenv
 
-Known Limitations:-
+##Known Limitations:-
 The hotel inventory is static and stored locally in hotels.json.
 There is no live connection to hotel booking or availability systems.
 The current system does not process real payments.

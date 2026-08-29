@@ -2,6 +2,35 @@
 
 Mira is a conversational AI hotel assistant that understands guest requirements, searches hotel inventory, helps guests select a property and room, and guides them through a booking flow.
 
+
+## Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/mehakthakur/mira-hotel-agent.git
+cd mira-hotel-agent
+
+2. Create a virtual environment
+python -m venv venv
+
+Activate it on Windows:
+venv\Scripts\activate
+
+3. Install dependencies
+pip install -r requirements.txt
+
+4. Configure the Gemini API
+Create a .env file in the project root:
+GEMINI_API_KEY=your_gemini_api_key
+
+The .env file should not be committed to GitHub.
+
+5. Run Mira
+python -m streamlit run app.py
+
+The Streamlit interface will open in your browser:)
+
 ## Architecture
 
 ```text
@@ -70,6 +99,37 @@ mira-hotel-agent/
 ├── .env                  # API key (not committed)
 └── README.md
 
+Component Responsibilities
+app.py:- Streamlit chat interface and UI
+agent.py:-	Conversation orchestration and booking flow
+llm.py:-	Natural-language intent extraction
+state.py:-	Maintains guest and booking state
+tools.py:-	Deterministic hotel/property search
+hotels.json:-	Structured hotel and room inventory
+tests/:-	Test cases and validation
+
+Design Principle
+
+LLM handles understanding and conversation.
+Deterministic Python logic handles hotel data, filtering, validation and booking state.
+
+This separation reduces the risk of hallucinating hotel names, prices or room information.
+
+Environment Variables
+
+Mira currently requires the following environment variable:-
+GEMINI_API_KEY,	Google Gemini API key used for natural-language intent extraction	
+
+Assumptions-
+Hotel and room information is stored in a structured local JSON inventory.
+Hotel prices represent the price per night.
+The guest's budget is interpreted as the maximum acceptable nightly room price.
+Room capacity must be sufficient for the requested number of guests.
+The current booking flow assumes one room unless the guest specifies otherwise.
+Dates are interpreted using the current year when the year is not explicitly provided.
+Booking confirmation represents a simulated booking flow; it does not connect to a real hotel reservation system.
+Hotel availability is based on the provided inventory rather than a live hotel booking API.
+
 CONVERSATIONAL FLOW:-
 
 Guest Request
@@ -130,4 +190,15 @@ Streamlit
 JSON
 Dataclasses
 python-dotenv
+
+Known Limitations:-
+The hotel inventory is static and stored locally in hotels.json.
+There is no live connection to hotel booking or availability systems.
+The current system does not process real payments.
+Booking confirmation is simulated and does not create a real reservation.
+The system currently supports a limited set of properties and room types.
+Natural-language date extraction depends on the supported intent-extraction logic.
+The system does not currently maintain bookings in a persistent database.
+Multi-room and complex group-booking scenarios have limited support.
+Hotel recommendations are based on the available inventory and deterministic matching/ranking rather than real-time market data.
 

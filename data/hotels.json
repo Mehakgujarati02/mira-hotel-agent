@@ -1,0 +1,183 @@
+{
+  "hotels": [
+    {
+      "id": "HT001",
+      "name": "The Palm Retreat",
+      "location": "Goa",
+      "description": "A relaxed beachfront property ideal for leisure stays.",
+      "amenities": [
+        "pool",
+        "beach access",
+        "wifi",
+        "breakfast",
+        "spa",
+        "restaurant"
+      ],
+      "policies": {
+        "check_in": "14:00",
+        "check_out": "11:00",
+        "free_cancellation": "24 hours before check-in"
+      },
+      "rooms": [
+        {
+          "id": "PR_DELUXE",
+          "name": "Deluxe Sea View",
+          "capacity": 2,
+          "price_per_night": 8500,
+          "available_rooms": 4,
+          "amenities": [
+            "sea view",
+            "king bed",
+            "wifi",
+            "balcony"
+          ]
+        },
+        {
+          "id": "PR_FAMILY",
+          "name": "Family Suite",
+          "capacity": 4,
+          "price_per_night": 12500,
+          "available_rooms": 2,
+          "amenities": [
+            "two bedrooms",
+            "king bed",
+            "sofa bed",
+            "wifi",
+            "balcony"
+          ]
+        }
+      ],
+      "add_ons": [
+        {
+          "id": "BREAKFAST",
+          "name": "Breakfast",
+          "price_per_guest": 600
+        },
+        {
+          "id": "AIRPORT_TRANSFER",
+          "name": "Airport Transfer",
+          "price": 1800
+        }
+      ]
+    },
+
+    {
+      "id": "HT002",
+      "name": "Urban Nest Mumbai",
+      "location": "Mumbai",
+      "description": "A modern city hotel suited for business and short stays.",
+      "amenities": [
+        "wifi",
+        "gym",
+        "restaurant",
+        "business center",
+        "room service"
+      ],
+      "policies": {
+        "check_in": "15:00",
+        "check_out": "11:00",
+        "free_cancellation": "48 hours before check-in"
+      },
+      "rooms": [
+        {
+          "id": "UN_STANDARD",
+          "name": "Standard Room",
+          "capacity": 2,
+          "price_per_night": 5500,
+          "available_rooms": 6,
+          "amenities": [
+            "queen bed",
+            "wifi",
+            "work desk"
+          ]
+        },
+        {
+          "id": "UN_EXECUTIVE",
+          "name": "Executive Room",
+          "capacity": 2,
+          "price_per_night": 7500,
+          "available_rooms": 3,
+          "amenities": [
+            "king bed",
+            "wifi",
+            "work desk",
+            "city view",
+            "lounge access"
+          ]
+        }
+      ],
+      "add_ons": [
+        {
+          "id": "BREAKFAST",
+          "name": "Breakfast",
+          "price_per_guest": 500
+        },
+        {
+          "id": "LATE_CHECKOUT",
+          "name": "Late Checkout",
+          "price": 1200
+        }
+      ]
+    },
+
+    {
+      "id": "HT003",
+      "name": "Mountain Mist Resort",
+      "location": "Manali",
+      "description": "A scenic mountain resort designed for families and couples.",
+      "amenities": [
+        "mountain view",
+        "pool",
+        "wifi",
+        "breakfast",
+        "restaurant",
+        "bonfire"
+      ],
+      "policies": {
+        "check_in": "14:00",
+        "check_out": "12:00",
+        "free_cancellation": "72 hours before check-in"
+      },
+      "rooms": [
+        {
+          "id": "MM_COTTAGE",
+          "name": "Mountain Cottage",
+          "capacity": 2,
+          "price_per_night": 7000,
+          "available_rooms": 5,
+          "amenities": [
+            "mountain view",
+            "king bed",
+            "fireplace",
+            "balcony"
+          ]
+        },
+        {
+          "id": "MM_FAMILY",
+          "name": "Family Villa",
+          "capacity": 5,
+          "price_per_night": 11000,
+          "available_rooms": 2,
+          "amenities": [
+            "mountain view",
+            "two bedrooms",
+            "living room",
+            "balcony"
+          ]
+        }
+      ],
+      "add_ons": [
+        {
+          "id": "BREAKFAST",
+          "name": "Breakfast",
+          "price_per_guest": 550
+        },
+        {
+          "id": "BONFIRE",
+          "name": "Private Bonfire",
+          "price": 2500
+        }
+      ]
+    }
+  ]
+}

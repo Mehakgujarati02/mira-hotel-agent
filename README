@@ -1,0 +1,133 @@
+# Mira — AI Hospitality Assistant
+
+Mira is a conversational AI hotel assistant that understands guest requirements, searches hotel inventory, helps guests select a property and room, and guides them through a booking flow.
+
+## Architecture
+
+```text
+                    GUEST
+                      │
+                      ▼
+              ┌───────────────┐
+              │  Streamlit UI │
+              └───────┬───────┘
+                      │
+                      ▼
+              ┌───────────────┐
+              │   MiraAgent   │
+              └───────┬───────┘
+                      │
+          ┌───────────┴───────────┐
+          ▼                       ▼
+   Intent Extraction          GuestState
+      (llm.py)                (state.py)
+          │                       │
+          └───────────┬───────────┘
+                      ▼
+                ┌───────────┐
+                │   Tools   │
+                │ (tools.py)│
+                └─────┬─────┘
+                      │
+                      ▼
+                hotels.json
+               Hotel Inventory
+                      │
+                      ▼
+             Matching Properties
+                      │
+                      ▼
+              Hotel Selection
+                      │
+                      ▼
+               Room Selection
+                      │
+                      ▼
+              Date Collection
+                      │
+                      ▼
+                Booking Flow
+
+PROJECT STRUCTURE:-
+
+mira-hotel-agent/
+│
+├── agent/
+│   ├── agent.py          # Conversation orchestration
+│   ├── llm.py            # Intent extraction & responses
+│   ├── state.py          # Persistent guest state
+│   ├── tools.py          # Hotel search & hotel tools
+│   └── recommendation.py # Hotel ranking logic(incomplete)
+│
+├── data/
+│   └── hotels.json       # Hotel & room inventory
+│
+├── tests/                # Test cases
+│
+├── app.py                # Streamlit UI
+├── test_conversation.py  # End-to-end conversation test
+├── requirements.txt
+├── .env                  # API key (not committed)
+└── README.md
+
+CONVERSATIONAL FLOW:-
+
+Guest Request
+      ↓
+Extract Requirements
+      ↓
+Update Guest State
+      ↓
+Missing Information?
+   ↙          ↘
+ YES           NO
+  ↓             ↓
+Ask Guest    Search Hotels
+                ↓
+         Select Hotel
+                ↓
+          Select Room
+                ↓
+        Collect Dates
+                ↓
+        Confirm Booking
+
+
+Core Components:-
+
+MiraAgent
+Controls the conversation and booking state transitions.
+
+GuestState
+Maintains destination, guests, budget, preferences, selected hotel/room, dates and booking status across messages.
+
+Tools
+Perform deterministic operations against the hotel inventory instead of allowing the LLM to invent hotel information.
+
+Hotel Inventory
+A structured JSON dataset containing fictional properties, rooms, prices, capacities and amenities.
+
+Streamlit UI
+Provides the conversational interface and displays the current booking state.
+
+Key Features:-
+Natural-language requirement extraction
+Persistent conversation state
+Deterministic hotel search
+Hotel and room selection
+Budget and capacity filtering
+Date validation
+No-result handling
+Booking confirmation flow
+Streamlit chat interface
+
+
+Tech Stack:-
+
+Python
+Google Gemini API
+Streamlit
+JSON
+Dataclasses
+python-dotenv
+

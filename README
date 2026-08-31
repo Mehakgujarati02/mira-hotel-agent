@@ -218,6 +218,7 @@ python-dotenv
 
 ##Known Limitations:-
 The hotel inventory is static and stored locally in hotels.json.
+Would complete the working of hotel recommendation system.
 There is no live connection to hotel booking or availability systems.
 The current system does not process real payments.
 Booking confirmation is simulated and does not create a real reservation.

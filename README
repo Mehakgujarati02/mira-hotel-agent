@@ -226,5 +226,5 @@ The system currently supports a limited set of properties and room types.
 Natural-language date extraction depends on the supported intent-extraction logic.
 The system does not currently maintain bookings in a persistent database.
 Multi-room and complex group-booking scenarios have limited support.
-Hotel recommendations are based on the available inventory and deterministic matching/ranking rather than real-time market data.
+
 
